@@ -139,6 +139,7 @@ The API is designed to be "leak-proof," returning structured JSON error response
 | `403 Forbidden` | `SensorUnavailableException` | Posting readings to a sensor in `MAINTENANCE` status. | "Update the sensor status to 'ACTIVE' before posting new readings." |
 | `409 Conflict` | `RoomNotEmptyException` | Deleting a room that still has sensors assigned to it. | "Reassign or delete all sensors in this room before decommissioning it." |
 | `409 Conflict` | Duplicate ID | Creating a Room or Sensor with an ID that already exists. | *(Standard Conflict)* |
+| `415 Unsupported Media Type` | `UnsupportedMediaTypeExceptionMapper` | Sending a request body with a `Content-Type` other than `application/json` (e.g., `text/plain`, `application/xml`). | "Set the request header: `Content-Type: application/json`" |
 | `422 Unprocessable Entity` | `LinkedResourceNotFound` | Registering a sensor with a `roomId` that does not exist. | "Check that the 'roomId' field references a room that exists in the system." |
 | `500 Internal Server Error` | `Throwable` (Global) | Any unexpected runtime error (e.g., `NullPointerException`). | "An unexpected error occurred. Please contact support or try again later." |
 
