@@ -1,1 +1,17 @@
-/target/
+# Maven build output
+target/
+
+# NetBeans / IDE files
+nbproject/
+nb-configuration.xml
+.nb-gradle/
+*.iml
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
