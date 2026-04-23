@@ -17,14 +17,8 @@ import java.util.Map;
 /**
  * Name: K. K. Nadeesha Hasaranga
  * ID: 20240675 / w2120076
- *
- * Handles all /api/v1/rooms endpoints.
- *
- *  GET    /api/v1/rooms          → list all rooms
- *  POST   /api/v1/rooms          → create a new room
- *  GET    /api/v1/rooms/{id}     → get a single room
- *  DELETE /api/v1/rooms/{id}     → delete a room (blocked if sensors exist)
  */
+
 @Path("/rooms")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -32,14 +26,14 @@ public class RoomResource {
 
     private final DataStore store = DataStore.getInstance();
 
-    // ── GET /rooms ────────────────────────────────────────────────────────────
+    // GET /rooms 
 
     @GET
     public Response getAllRooms() {
         return Response.ok(store.getRooms().values()).build();
     }
 
-    // ── POST /rooms ───────────────────────────────────────────────────────────
+    // POST /rooms 
 
     @POST
     public Response createRoom(Room room) {
@@ -53,7 +47,7 @@ public class RoomResource {
         return Response.status(201).entity(room).build();
     }
 
-    // ── GET /rooms/{id} ───────────────────────────────────────────────────────
+    //GET /rooms/{id} 
 
     @GET
     @Path("/{id}")
@@ -65,7 +59,7 @@ public class RoomResource {
         return Response.ok(room).build();
     }
 
-    // ── DELETE /rooms/{id} ────────────────────────────────────────────────────
+    // DELETE /rooms/{id} 
 
     @DELETE
     @Path("/{id}")
@@ -82,7 +76,7 @@ public class RoomResource {
         return Response.noContent().build(); // 204
     }
 
-    // ── Helper ────────────────────────────────────────────────────────────────
+    // Helper 
 
     private Response errorResponse(int status, String error, String message) {
         Map<String, Object> body = new LinkedHashMap<>();

@@ -33,6 +33,7 @@ public class SmartCampusApp extends Application {
         classes.add(RoomNotEmptyExceptionMapper.class);
         classes.add(LinkedResourceNotFoundExceptionMapper.class);
         classes.add(SensorUnavailableExceptionMapper.class);
+        classes.add(UnsupportedMediaTypeExceptionMapper.class);
         classes.add(GlobalExceptionMapper.class);
 
         // Filters

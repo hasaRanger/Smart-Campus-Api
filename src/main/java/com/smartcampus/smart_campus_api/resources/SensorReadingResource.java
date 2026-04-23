@@ -19,12 +19,8 @@ import java.util.UUID;
 /**
  * Name: K. K. Nadeesha Hasaranga
  * ID: 20240675 / w2120076
- *
- * Sub-resource for sensor readings.
- * Reached via the sub-resource locator in SensorResource:
- *   GET  /api/v1/sensors/{sensorId}/readings
- *   POST /api/v1/sensors/{sensorId}/readings
  */
+
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class SensorReadingResource {
@@ -36,7 +32,7 @@ public class SensorReadingResource {
         this.sensorId = sensorId;
     }
 
-    // ── GET /sensors/{sensorId}/readings ──────────────────────────────────────
+    //GET /sensors/{sensorId}/readings 
 
     @GET
     public Response getReadings() {
@@ -47,7 +43,7 @@ public class SensorReadingResource {
         return Response.ok(store.getReadingsForSensor(sensorId)).build();
     }
 
-    // ── POST /sensors/{sensorId}/readings ─────────────────────────────────────
+    // POST /sensors/{sensorId}/readings 
 
     @POST
     public Response addReading(SensorReading reading) {
@@ -77,7 +73,7 @@ public class SensorReadingResource {
         return Response.status(201).entity(reading).build();
     }
 
-    // ── Helper ────────────────────────────────────────────────────────────────
+    // Helper 
 
     private Response errorResponse(int status, String error, String message) {
         Map<String, Object> body = new LinkedHashMap<>();

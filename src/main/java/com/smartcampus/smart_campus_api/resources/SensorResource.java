@@ -19,17 +19,8 @@ import java.util.stream.Collectors;
 /**
  * Name: K. K. Nadeesha Hasaranga
  * ID: 20240675 / w2120076
- *
- * Handles all /api/v1/sensors endpoints.
- *
- *  POST /api/v1/sensors            → register a new sensor
- *  GET  /api/v1/sensors            → list all sensors
- *  GET  /api/v1/sensors?type=CO2   → list sensors filtered by type
- *  GET  /api/v1/sensors/{id}       → get a single sensor
- *
- *  Sub-resource locator:
- *  ANY  /api/v1/sensors/{id}/readings → delegates to SensorReadingResource
  */
+
 @Path("/sensors")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -37,7 +28,7 @@ public class SensorResource {
 
     private final DataStore store = DataStore.getInstance();
 
-    // ── POST /sensors ─────────────────────────────────────────────────────────
+    // POST /sensors 
 
     @POST
     public Response createSensor(Sensor sensor) {
@@ -60,7 +51,7 @@ public class SensorResource {
         return Response.status(201).entity(sensor).build();
     }
 
-    // ── GET /sensors (with optional ?type= filter) ────────────────────────────
+    // GET /sensors (with optional ?type= filter) 
 
     @GET
     public Response getSensors(@QueryParam("type") String type) {
@@ -70,7 +61,7 @@ public class SensorResource {
         return Response.ok(result).build();
     }
 
-    // ── GET /sensors/{id} ─────────────────────────────────────────────────────
+    // GET /sensors/{id} 
 
     @GET
     @Path("/{id}")
@@ -82,7 +73,7 @@ public class SensorResource {
         return Response.ok(sensor).build();
     }
 
-    // ── Sub-resource locator: /sensors/{sensorId}/readings ───────────────────
+    // Sub-resource locator: /sensors/{sensorId}/readings 
 
     @Path("/{sensorId}/readings")
     public SensorReadingResource getReadingResource(
@@ -106,7 +97,7 @@ public class SensorResource {
         return Response.ok(existing).build();
     }
 
-    // ── Helper ────────────────────────────────────────────────────────────────
+    // Helper 
     private Response errorResponse(int status, String error, String message) {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("status", status);

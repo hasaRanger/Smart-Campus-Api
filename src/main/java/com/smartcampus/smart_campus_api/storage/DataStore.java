@@ -21,7 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class DataStore {
  
-    // ── Singleton setup ───────────────────────────────────────────
+    // Singleton setup 
  
     private static final DataStore INSTANCE = new DataStore();
  
@@ -31,22 +31,22 @@ public class DataStore {
         return INSTANCE;
     }
  
-    // ── Storage maps ──────────────────────────────────────────────
+    // Storage maps 
  
-    /** roomId → Room */
+    /** roomId - Room */
     private final Map<String, Room> rooms = new ConcurrentHashMap<>();
  
-    /** sensorId → Sensor */
+    /** sensorId - Sensor */
     private final Map<String, Sensor> sensors = new ConcurrentHashMap<>();
  
     /**
-     * sensorId → thread-safe list of SensorReadings.
+     * sensorId - thread-safe list of SensorReadings.
      * computeIfAbsent ensures we never return null for an unknown sensorId.
      */
     private final Map<String, List<SensorReading>> readings =
             new ConcurrentHashMap<>();
  
-    // ── Accessors ─────────────────────────────────────────────────
+    // Accessors 
  
     public Map<String, Room> getRooms() {
         return rooms;

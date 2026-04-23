@@ -13,7 +13,7 @@ package com.smartcampus.smart_campus_api.exception;
  * Thrown when a POST reading is attempted on a sensor in MAINTENANCE status.
  * Mapped to HTTP 403 Forbidden by SensorUnavailableExceptionMapper.
  */
-// 403 — sensor is in MAINTENANCE state
+// 403 - sensor is in MAINTENANCE state
 public class SensorUnavailableException extends RuntimeException {
     public SensorUnavailableException(String sensorId) {
         super("Sensor " + sensorId + " is under maintenance.");

@@ -25,19 +25,19 @@ public class DiscoveryResource {
     public Response discover() {
         Map<String, Object> response = new LinkedHashMap<>();
 
-        // ── API metadata ──────────────────────────────────────────────────────
+        // API metadata 
         response.put("apiName", "Smart Campus Sensor & Room Management API");
         response.put("version", "1.0.0");
         response.put("description", "RESTful API for managing campus rooms, sensors, and sensor readings.");
 
-        // ── Admin contact ─────────────────────────────────────────────────────
+        // Admin contact 
         Map<String, String> contact = new LinkedHashMap<>();
         contact.put("name", "Smart Campus Admin");
         contact.put("email", "admin@smartcampus.ac.uk");
         contact.put("department", "Facilities Management");
         response.put("contact", contact);
 
-        // ── HATEOAS links (primary resource collections) ──────────────────────
+        // HATEOAS links (primary resource collections) 
         Map<String, String> links = new LinkedHashMap<>();
         links.put("self",     "/api/v1");
         links.put("rooms",    "/api/v1/rooms");
